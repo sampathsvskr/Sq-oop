@@ -5,7 +5,8 @@
 -Works based on Map-Reduce framework and works in parallel using multiple mappers.<br>
 -Uses only mappers as the job is just to transfer the data.<br>
 
-[Sqoop mostly used commands<br>](https://github.com/sampathsvskr/Sq-oop/blob/main/Sqoop%20Commands)
-
+>[Sqoop -list databases and tables<br>](https://github.com/sampathsvskr/Sq-oop/blob/main/SqoopCommands.md#sqoop--list-databases-and-tables)
+[Sqoop -import<br>](https://github.com/sampathsvskr/Sq-oop/blob/main/SqoopCommands.md#sqoop--import)
+[Sqoop -file formats<br>](https://github.com/sampathsvskr/Sq-oop/blob/main/SqoopCommands.md#sqoop--file-formats)
 [Sqoop official doc for more details<br>](https://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html)
 
