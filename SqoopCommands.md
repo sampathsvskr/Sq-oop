@@ -317,7 +317,34 @@ sqoop import \
   
 ```
 
+## Sqoop -compression
+Compression is enabled only by specifying `--compress` or `-z`.<br>
+By default, compression mode is `gzip`<br>
 
+```
+sqoop import \
+  --connect jdbc:mysql:### localhost:3306/testdb \
+  --username root \
+  --password hortonworks1 \
+  --table TBLS \ 
+  --split-by "id" \
+  --target-dir '/tmp/sqooptbls/' \
+  --compress \
+  --compression-codec org.apache.hadoop.io.compress.GzipCodec
+```
+
+```
+sqoop import \
+  --connect jdbc:mysql:### localhost:3306/testdb \
+  --username root \
+  --password hortonworks1 \
+  --table TBLS \ 
+  --split-by "id" \
+  --target-dir '/tmp/sqooptbls/' \
+  --as-parquetfile
+  -z \
+  --compression-codec org.apache.hadoop.io.compress.SnappyCodec
+```
  
   
 
