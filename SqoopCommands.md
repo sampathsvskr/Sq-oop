@@ -1,6 +1,6 @@
 
 ## Sqoop -List databases and tables 
-### Check connection for mysql database
+### Check connection for sql database
 
 
 ``` 
@@ -20,7 +20,8 @@ sqoop list-databases \
   --password hortonworks1
 ```
 
-###  List-tables --- testdb is the database name
+###  List-tables 
+`testdb` is the database name
 ```
 sqoop list-tables \
   --connect jdbc:mysql:### localhost:3306/testdb \
