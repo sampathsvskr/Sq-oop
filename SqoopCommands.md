@@ -275,7 +275,33 @@ sqoop import-all-tables \
   --excluse-tables employee,salary
   --warehouse-dir '/sqoop/alltbls/'
  ``` 
-  
+
+## Sqoop -eval
+To preview the data by running SQL queries against the database before importing.<br>
+Use `-e` or `--query` to run the query.
+
+``` 
+sqoop import-all-tables \
+  --connect "jdbc:mysql:### localhost:3306/testdb" \
+  --username=root \
+  --password=hortonworks1 \
+  -e "SELECT * FROM Employee LIMIT 5"
+ ``` 
+  ``` 
+sqoop import-all-tables \
+  --connect "jdbc:mysql:### localhost:3306/testdb" \
+  --username=root \
+  --password=hortonworks1 \
+  -e "CREATE TABLE Temp(id int, name varchar(50))"
+ ``` 
+ ``` 
+sqoop import-all-tables \
+  --connect "jdbc:mysql:### localhost:3306/testdb" \
+  --username=root \
+  --password=hortonworks1 \
+  -e "INSERT INTO Temp VALUES(1,'sam')"
+ ``` 
+
 ## Sqoop -File Formats
 ###  Storing data in different file formats.
 By default data is stored in text files.
