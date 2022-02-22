@@ -1,5 +1,5 @@
 
-
+## Sqoop -List databases and tables 
 ### check connection for mysql database
 
 sqoop import \
@@ -8,7 +8,7 @@ sqoop import \
   --password hortonworks1
 
 
-### list databases available mysql database
+### list databases
 
 sqoop list-databases \
   --connect jdbc:mysql:### localhost:3306 \
@@ -30,7 +30,7 @@ sqoop list-tables \
   --username root \
   --password-file /tmp/pass-file
     
-
+## Sqoop -import
 ###  import data from Mysql to HDFS -- importing data from table employee present in testdb to HDFS location /tmp/sqooptbls/
 
 sqoop import \
@@ -131,41 +131,7 @@ sqoop import \
   --target-dir '/tmp/sqooptbls/' \
   --delete-target-dir \
   -m 1
-  
 
-###  Storing data in different file formats.
-By default data is stored in text files.
-
-sqoop import \
-  --connect jdbc:mysql:### localhost:3306/testdb \
-  --username root \
-  --password hortonworks1 \
-  --table TBLS \ 
-  --split-by "id" \
-  --target-dir '/tmp/sqooptbls/' \
-  --as-textfile \
-  -m 1
-  
-sqoop import \
-  --connect jdbc:mysql:### localhost:3306/testdb \
-  --username root \
-  --password hortonworks1 \
-  --table TBLS \ 
-  --split-by "id" \
-  --target-dir '/tmp/sqooptbls/' \
-  --as-parquetfile \
-  -m 1
-  
-sqoop import \
-  --connect jdbc:mysql:### localhost:3306/testdb \
-  --username root \
-  --password hortonworks1 \
-  --table TBLS \ 
-  --split-by "id" \
-  --target-dir '/tmp/sqooptbls/' \
-  --as-sequencefile \
-  -m 1
-  
 ### Boundary query
 
 sqoop import \
@@ -195,7 +161,6 @@ sqoop import \
   --table TBLS \ 
   --columns name,id \
   --target-dir '/tmp/sqooptbls/'
-
 ###  we can use --query to perfom any operation on the table like fetch limited rows or joining tables..
 we need to give '\$CONDITIONS' in where class when we use --query else it will throw an error.
 we cannot use '--warehouse-dir' in this case, as we will not be mentioning any table name.
@@ -261,6 +226,44 @@ sqoop import-all-tables \
   --autoreset-to-one-mapper
   --excluse-tables employee,salary
   --warehouse-dir '/sqoop/alltbls/'
+  
+  
+## Sqoop -File Formats
+###  Storing data in different file formats.
+By default data is stored in text files.
+
+sqoop import \
+  --connect jdbc:mysql:### localhost:3306/testdb \
+  --username root \
+  --password hortonworks1 \
+  --table TBLS \ 
+  --split-by "id" \
+  --target-dir '/tmp/sqooptbls/' \
+  --as-textfile \
+  -m 1
+  
+sqoop import \
+  --connect jdbc:mysql:### localhost:3306/testdb \
+  --username root \
+  --password hortonworks1 \
+  --table TBLS \ 
+  --split-by "id" \
+  --target-dir '/tmp/sqooptbls/' \
+  --as-parquetfile \
+  -m 1
+  
+sqoop import \
+  --connect jdbc:mysql:### localhost:3306/testdb \
+  --username root \
+  --password hortonworks1 \
+  --table TBLS \ 
+  --split-by "id" \
+  --target-dir '/tmp/sqooptbls/' \
+  --as-sequencefile \
+  -m 1
+  
+
+
 
  
   
