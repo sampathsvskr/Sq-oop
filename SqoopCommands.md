@@ -23,7 +23,8 @@ sqoop list-tables \
   --username root \
   --password hortonworks1
   
-###  using password file instead of typing password. Need to give file location
+###  using password file. 
+Need to give file location
 
 sqoop list-tables \
   --connect jdbc:mysql:### localhost:3306/testdb \
@@ -31,7 +32,8 @@ sqoop list-tables \
   --password-file /tmp/pass-file
     
 ## Sqoop -import
-###  import data from Mysql to HDFS -- importing data from table employee present in testdb to HDFS location /tmp/sqooptbls/
+###  import data from Mysql to HDFS 
+importing data from table employee present in testdb to HDFS location /tmp/sqooptbls/
 
 sqoop import \
   --connect "jdbc:mysql:### localhost:3306/testdb" \
@@ -41,7 +43,8 @@ sqoop import \
   --target-dir '/tmp/sqooptbls/'
   
 
-### Multi-Mapper Import  -- here each mapper writes to seperate files. 
+### Multi-Mapper Import  
+Each mapper writes to seperate files. 
 If we use more than one mapper, we need have primary key for the table, else we need to use --split-by.
 we can use -m or --num-mappers
 By default Sqoop sets 4 mappers.
@@ -73,7 +76,8 @@ sqoop import \
   --target-dir '/tmp/sqooptbls/' \
   -m 5
   
-### split based on text/string column --- need to set -Dorg.apache.sqoop.splitter.allow_text_splitter=true
+### split based on text/string column 
+Need to set -Dorg.apache.sqoop.splitter.allow_text_splitter=true
 
 sqoop import \
   -Dorg.apache.sqoop.splitter.allow_text_splitter=true
@@ -85,7 +89,8 @@ sqoop import \
   --target-dir '/tmp/sqooptbls/' \
   -m 5
   
-### '--autoreset-to-one-mapper', it sets mappers as 1 by default when there is no primary key, it is not necessary to use split-by in this case
+### '--autoreset-to-one-mapper'
+It sets mappers as 1 by default when there is no primary key, it is not necessary to use split-by in this case
 
 sqoop import \
   --connect jdbc:mysql:### localhost:3306/testdb \
@@ -120,7 +125,8 @@ sqoop import \
   --append \
   -m 5
   
-### for overwriting data, we need to delete target directory and recreate it. We can use --delete-target-dir for this.
+### for overwriting data 
+We need to delete target directory and recreate it. We can use --delete-target-dir for this.
   
   sqoop import \
   --connect jdbc:mysql:### localhost:3306/testdb \
@@ -161,7 +167,9 @@ sqoop import \
   --table TBLS \ 
   --columns name,id \
   --target-dir '/tmp/sqooptbls/'
-###  we can use --query to perfom any operation on the table like fetch limited rows or joining tables..
+
+###  Using Query 
+We can use --query to perfom any operation on the table like fetch limited rows or joining tables..
 we need to give '\$CONDITIONS' in where class when we use --query else it will throw an error.
 we cannot use '--warehouse-dir' in this case, as we will not be mentioning any table name.
 
@@ -174,7 +182,8 @@ sqoop import \
   --target-dir '/tmp/sqooptbls/'
   --m 1
   
-### '--where' --- to import data based on certain condititon
+### using Where
+To import data based on certain condititon
 
 sqoop import \
   --connect jdbc:mysql:### localhost:3306/testdb \
