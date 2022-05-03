@@ -277,6 +277,22 @@ sqoop import-all-tables \
   --warehouse-dir '/sqoop/alltbls/'
  ``` 
 
+## Handling null values
+null-string  -> for String columns
+null-non-string  -> for non-string columns like integer..
+
+``` 
+sqoop import-all-tables \
+  --connect "jdbc:mysql:### localhost:3306/testdb" \
+  --username=root \
+  --password=hortonworks1 \
+  --autoreset-to-one-mapper
+  --excluse-tables employee,salary
+  --warehouse-dir '/sqoop/alltbls/'
+  --null-string "***"
+  --null-non-string "---"
+ ``` 
+
 ## Sqoop -eval
 To preview the data by running SQL queries against the database before importing.<br>
 Use `-e` or `--query` to run the query.
