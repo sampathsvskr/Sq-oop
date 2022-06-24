@@ -290,7 +290,7 @@ sqoop import-all-tables \
   --excluse-tables employee,salary
   --warehouse-dir '/sqoop/alltbls/'
   --null-string "***"
-  --null-non-string "---"
+  --null-non-string -1
  ``` 
 
 ## Sqoop -eval
